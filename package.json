@@ -1,0 +1,24 @@
+{
+  "name": "love-messages-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/server.js",
+    "db": "node ./src/database/createAndPopulate.js",
+    "delete-db": "rm ./src/database/love-messages.db",
+    "dev": "nodemon ./src/server.js"
+  },
+  "author": "André Siqueira",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6"
+  }
+}
