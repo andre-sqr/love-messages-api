@@ -78,7 +78,7 @@ const messagesDAO = {
                 if (error) {
                     reject(error)
                 } else {
-                    resolve(`Mensagem de id ${id} deletada com sucesso`)
+                    resolve(`mensagem de id ${id} deletada com sucesso`)
                 }
             })
         })

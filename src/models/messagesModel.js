@@ -75,6 +75,21 @@ const messagesModel = {
                 status: 400
             }
         }
+    },
+
+    deletarMensagens: async (id)=> {
+        try {
+            const answer = await messagesDAO.deletarMensagens(id)
+            return {
+                feedback: answer,
+                status: 200
+            }
+        } catch (error) {
+            return {
+                errorMessage: error.message,
+                status: 400
+            }
+        }
     }
 }
 

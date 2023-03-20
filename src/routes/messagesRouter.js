@@ -8,6 +8,7 @@ router
     .get('/messages/id/:id', messagesController.buscarMensagensPorID)
     .get('/messages/date/:date', messagesController.buscarMensagensPorData)
     .post('/messages', messagesController.criarMensagem)
+    .delete('/messages/id/:id', messagesController.deletarMensagem)
 
 
 export default router;

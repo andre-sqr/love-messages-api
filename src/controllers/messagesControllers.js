@@ -117,6 +117,38 @@ const messagesController = {
                 "erro": true
             })
         }
+    },
+
+    deletarMensagem: async (req, res)=> {
+        const id = req.params.id
+        try {
+            const searchPreviousId = await messagesModel.buscarMensagensPorID(id)
+            if (searchPreviousId.data.length != 0) {
+                const answer = await messagesModel.deletarMensagens(id)
+
+                if (answer.status == 200) {
+                    res.status(answer.status).json({
+                        "feedback": answer.feedback,
+                        "erro": false
+                    })
+                } else {
+                    res.status(answer.status).json({
+                        "feedback": answer.errorMessage,
+                        "erro": true
+                    })
+                }
+            } else {
+                res.status(404).json({
+                    "feedback": `request's ID does not exist`,
+                    "erro": true
+                })
+            }
+        } catch (error) {
+            res.status(500).json({
+                "feedback": error.message,
+                "erro": true
+            })
+        }
     }
 }
 
