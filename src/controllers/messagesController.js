@@ -149,6 +149,33 @@ const messagesController = {
                 "erro": true
             })
         }
+    },
+
+    atualizarMensagens: async (req, res)=> {
+        const id = req.params.id
+        const body = await req.body
+        try {
+            const searchPreviousId = await messagesModel.buscarMensagensPorID(id)
+            if (searchPreviousId.data.length != 0) {
+                const answer = await messagesModel.atualizarMensagens(id, body)
+                if (answer.status == 201) {
+                    res.status(answer.status).json({
+                        "feedback": answer.feedback,
+                        "erro": false
+                    })
+                }
+            } else {
+                res.status(404).json({
+                    "feedback": `request's ID does not exist`,
+                    "erro": true
+                })
+            }
+        } catch (error) {
+            res.status(500).json({
+                "feedback": error.message,
+                "erro": true
+            })
+        }
     }
 }
 
